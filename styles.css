@@ -1,0 +1,1158 @@
+/* Estilos generales */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    width: 100%;
+    /* Asegúrate de que el ancho sea 100% */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    /* Asegúrate de que el contenedor ocupe todo el ancho */
+}
+
+/* Fila superior: DIV 1 y DIV 2 */
+.row.top {
+    display: flex;
+    height: 20%;
+    background-color: lightgray;
+    flex-direction: column;
+    height: 20%;
+}
+
+/* Fila inferior: DIV 3 y DIV 4 */
+.row.bottom {
+    display: flex;
+    flex: 1;
+}
+
+/* Estilos de cada caja (DIV) */
+.box {
+   /* border: 1px solid black;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.contact2-button {
+    display: none;
+}
+
+
+
+.responsive-menu {
+
+    display: none;
+    /* Oculta el botón en pantallas grandes */
+}
+
+
+
+.menu-toggle {
+    display: none;
+    /* Oculta el botón en pantallas grandes */
+    cursor: pointer;
+    /* Añade un cursor de mano */
+}
+
+.logo2 {
+    display: none;
+}
+
+
+.close-menu{ 
+    display: none;
+}
+
+
+/* Ajustes de responsividad */
+@media (max-width: 438px) {
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        overflow-x: hidden;
+        /* Evita desbordamiento horizontal */
+    }
+
+    .container {
+        width: 100vw;
+        /* Asegura que el contenedor ocupe todo el ancho */
+        padding: 0;
+    }
+
+    .row.top,
+    .row.bottom {
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        /* Elimina cualquier margen adicional */
+        box-sizing: border-box;
+    }
+
+
+    .div1,
+    .div2 {
+        width: 100%;
+        /* Asegura que ambos divs ocupen todo el ancho disponible */
+        flex: 1 1 auto;
+        padding: 0;
+        /* Elimina cualquier relleno extra */
+        margin: 0;
+        /* Elimina márgenes que podrían estar limitando el ancho */
+
+        height: 100px;
+        /* Mantener la altura fija */
+        max-height: 100px;
+        /* Establecer una altura máxima para evitar la expansión */
+        padding: 15px 0; /* Añade más espacio en la parte superior e inferior */
+    }
+
+
+
+
+    /* Ocultar el menú por defecto en pantallas pequeñas */
+    .menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        width: 300px;
+        height: auto;
+        /* Permitir que el contenedor crezca según el contenido */
+        margin: 0 auto;
+        padding: 10px;
+        box-sizing: border-box;
+        background-color: white;
+        position: absolute;
+        top: 40px;
+        /* Posición ajustada para aparecer debajo del botón */
+        right: 0px;
+        left: 0px;
+        z-index: 9999;
+        border-radius: 10px;
+        gap: 15px;
+       
+        visibility: hidden;
+        /* Asegura que esté oculto por completo */
+
+    }
+
+    /* Mostrar el menú completo cuando se activa el botón hamburguesa */
+    .menu.show {
+        display: flex;
+        position: absolute;
+        visibility: visible;
+        /* Asegura que sea visible cuando se active */
+        right: 0px;
+        top: 200px;
+        /* Mostrar el menú cuando la clase 'show' esté presente */
+    }
+
+    /* Menú hamburguesa */
+    .menu-toggle {
+        display: flex;
+        width: 30px;
+        position: relative;
+        /* Mostrar el botón hamburguesa en pantallas pequeñas */
+        align-items: flex-end;
+        font-size: 1.5rem;
+        background: none;
+        border: solid rgb(255, 255, 255) 1px;
+        color: #000;
+        margin-left: 0px;
+        margin-right: 40px;
+        z-index: 999;
+        margin-top: -20px;
+    }
+
+    /* Capa para desenfocar el fondo */
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        /* Fondo oscuro semitransparente */
+        backdrop-filter: blur(10px);
+        /* Aplica el desenfoque */
+        z-index: 9997;
+        /* Debe estar detrás del menú */
+    }
+
+    /* Mostrar el overlay cuando el menú esté activo */
+    .menu.show+.overlay {
+        display: block;
+    }
+
+
+
+
+
+
+
+
+
+
+    /* Ocultar el menú responsive por defecto */
+    .responsive-menu {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    /* Ajuste de los elementos de la lista del menú */
+    ul.responsive-menu li {
+        border-bottom: 1px solid #ddd;
+        position: relative;
+    }
+
+    /* Estilo de los enlaces del menú */
+    ul.responsive-menu a {
+        display: flex;
+        justify-content: space-between;
+        /* Asegura que el texto y la flecha estén en los extremos */
+        padding: 20px 25px;
+        /* Ajusta el padding para que se vea mejor */
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    /* Flechas en el dropdown */
+    ul.responsive-menu .dropdown-toggle {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Ajuste del submenú desplegable */
+    ul.responsive-menu .dropdown-menu {
+        display: none;
+        background-color: #f9f9f9;
+        list-style-type: none;
+        padding-left: 0;
+        position: relative;
+        /* Asegurar que se posicione dentro del contenedor principal */
+    }
+
+    /* Mostrar el submenú al hacer hover o click */
+    ul.responsive-menu .dropdownR:hover .dropdown-menu {
+        display: block;
+        position: relative;
+        /* Mantener la posición relativa dentro del contenedor principal */
+    }
+
+    /* Ajuste de las flechas */
+    .arrow2 {
+        font-size: 12px;
+        /* Ajusta el tamaño de la flecha a un tamaño adecuado */
+        color: orange;
+        margin-left: auto;
+        /* Asegura que la flecha esté alineada a la derecha */
+        position: relative;
+        /* Asegura que no se salga del contenedor */
+    }
+
+    /* Botón de contacto */
+    .contact2-button {
+        width: 100%;
+        padding: 15px;
+        background-color: orange;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: bold;
+        text-align: center;
+        display: block;
+
+    }
+
+    .contact2-button:hover {
+        background-color: #e67e22;
+    }
+
+
+    .logo2 {
+        display: block;
+        position: relative;
+        margin-right: auto;
+        /* Asegura que el logo esté dentro del contenedor */
+        margin-left: 0;
+        z-index: 1;
+        /* Asegura que el logo esté detrás del menú desplegable */
+        width: 50px;
+        /* Ajusta el tamaño del logo si es necesario */
+        height: auto;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+/* Estilo para el botón de cerrar el menú */
+.close-menu {
+    position: absolute;
+    top: 10px; /* Ajusta la distancia desde la parte superior */
+    right: 10px; /* Ajusta la distancia desde la parte derecha */
+    width: 40px;
+    height: 40px;
+    background-color: #F2F2F2; /* Color de fondo gris claro */
+    border: none;
+    border-radius: 50%; /* Hace que el botón sea circular */
+    cursor: pointer;
+    z-index: 10001; /* Asegura que esté por encima del resto del contenido */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para darle un toque de profundidad */
+}
+
+/* Estilo para la X */
+.close-menu::before {
+   
+    font-size: 20px; /* Ajusta el tamaño de la X */
+    color: #000; /* Color de la X */
+    font-weight: bold;
+    line-height: 1;
+}
+
+/* Estilo para el hover del botón de cerrar */
+.close-menu:hover {
+    background-color: #e0e0e0; /* Cambia ligeramente el fondo cuando se pasa el ratón */
+}
+
+
+.logo{
+    display: block;
+    position: relative;
+    right: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+    /*PARTES OCULTAS QUE NO SE USAN*/
+    /* Ocultar logo, menú-item, y contact-button por defecto */
+ 
+    .menu-item,
+    .contact-button {
+        display: none;
+
+    }
+
+    /* Mostrar logo, menú-item, y contact-button cuando la clase 'show' esté presente */
+    .menu.show .logo,
+    .menu.show .menu-item,
+    .menu.show .contact-button {
+        display: none;
+    }
+
+    .menu-item.active,
+    .menu-item,
+    .dropdown,
+    .contact-button {
+        display: none;
+    }
+
+    /* Submenús dentro del flujo del menú */
+    .dropdown-content {
+        display: none;
+    }
+
+
+
+    .btn-contact {
+        display: none;
+    }
+
+
+    .contact-text {
+
+        display: none;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    /* Ajustes para los botones */
+    .button-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Alinea los botones al centro */
+        justify-content: center;
+        /* Asegura que los botones estén centrados */
+        margin-top: 20px;
+        width: 100%;
+        padding-left: 15px;
+        /* Añade un pequeño padding para alinearlo desde la izquierda */
+    }
+
+    .btn-orange,
+    .btn-yellow {
+        font-size: 1rem;
+        padding: 10px 20px;
+        width: auto;
+        /* Deja que el botón se ajuste al contenido */
+        max-width: 300px;
+        /* Limita el ancho máximo de los botones */
+        margin-bottom: 15px;
+        /* Espacio entre los botones */
+
+    }
+
+    .slider-wrapper {
+        position: relative;
+    }
+
+    .slider {
+        --slide-width: clamp(320px, 75vw, 800px);
+        --slide-height: clamp(250px, 80vh, 600px);
+
+        display: grid;
+        grid-auto-flow: column;
+        scroll-snap-type: x mandatory;
+        max-width: var(--slide-width);
+        border: 5px solid #fff;
+        box-shadow: 0 2px 15px rgba(#000, 0.2), 0 2px 20px rgba(#000, 0.25);
+        overflow-y: hidden;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .slide {
+        scroll-snap-align: start;
+        width: var(--slide-width);
+        height: var(--slide-height);
+        background-size: cover;
+        /* Esto garantiza que la imagen cubra todo el contenedor */
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+
+    /* Estilos para las flechas de navegación */
+    .arrow {
+        position: absolute;
+        bottom: 100px;
+        /* Mueve las flechas a la parte inferior */
+        transform: translateY(0);
+        /* Ajusta la posición vertical */
+        background-color: rgba(0, 0, 0, 0.5);
+        border: none;
+        color: white;
+        padding: 20px;
+        cursor: pointer;
+        z-index: 1000;
+        font-size: 24px;
+        border-radius: 50%;
+    }
+
+    .arrow.prev {
+        margin-left: 50px;
+        /* Ajusta la distancia desde la izquierda */
+    }
+
+    .arrow.next {
+        right: 10%;
+        /* Ajusta la distancia desde la derecha */
+    }
+
+    .arrow:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+
+
+
+    .div1 {
+        position: relative;
+        width: 100%;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+        /* Alinea los botones al centro */
+        justify-content: center;
+        /* Asegura que los botones estén centrados */
+        padding: 0 35px;
+        /* Ajusta el espacio lateral */
+    }
+
+    /* Estilo para los iconos de contacto a la izquierda */
+    .contact-info {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        left: -30px;
+        /* Ajusta la posición izquierda */
+
+    }
+
+    .contact-info .icon {
+        margin-left: 10px;
+        /* Espacio entre los íconos */
+    }
+
+    /* Estilo para los iconos sociales a la derecha */
+    .social-icons {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        right: -30px;
+        /* Ajusta la posición derecha */
+
+    }
+
+    .social-icons .icon {
+        margin-left: 10px;
+        /* Espacio entre los íconos */
+    }
+
+
+
+    /* Ajuste para el contenedor general */
+    .div3 {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        /* Alinea los botones al centro */
+        justify-content: center;
+        /* Asegura que los botones estén centrados */
+        /* Alinea verticalmente al inicio */
+        flex-direction: column;
+        padding: 0px;
+    }
+
+
+    .content-text h1 {
+       /* border: #ffffff solid 10px;*/
+        font-size: 12pt;
+        font-weight: bold;
+        color: #333;
+        line-height: 0.2;
+        width: 100%;
+        margin-left: 0px;
+        /* Elimina el margen izquierdo */
+
+        text-align: justify;
+        /* O ajusta según prefieras */
+    }
+
+    .content-text p {
+       /* border: rgb(255, 255, 255) solid 10px;*/
+        font-size: 1.2rem;
+        margin-top: 10px;
+        color: #666;
+        line-height: 0.2;
+        width: 100%;
+        margin-left: 0px;
+        /* Elimina el margen izquierdo */
+
+        text-align: justify;
+        /* Justifica el texto */
+    }
+
+    .content-text {
+        width: 100%;
+        padding: 0px;
+        /* Elimina el padding lateral */
+        /* Ajusta el padding para evitar bordes laterales */
+        text-align: justify;
+        /* Centra el texto */
+        background-color: rgb(241, 241, 241);
+        margin-right: 20px;
+    }
+
+}
+
+
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 480px) {
+
+    /* Asegurarse de que el menú responsive se muestre correctamente */
+    .responsive-menu {
+        display: block;
+    }
+
+    .responsive-menu .dropdown-menu {
+        display: none;
+    }
+
+    /* Estilo para mostrar el submenú al hacer click o hover */
+    .responsive-menu .dropdownR:hover .dropdown-menu {
+        display: block;
+    }
+
+    .arrow {
+        font-size: 12px;
+        color: orange;
+    }
+
+    .contact-button {
+        width: 100%;
+        padding: 15px;
+        background-color: orange;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .contact-button:hover {
+        background-color: #e67e22;
+    }
+
+
+
+
+    .content-text h1 {
+        font-size: 1.8rem;
+        line-height: 1.1;
+        letter-spacing: -0.5px;
+        text-align: center;
+    }
+
+    .content-text p {
+        font-size: 1rem;
+        line-height: 1.3;
+        letter-spacing: -0.3px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .btn-orange,
+    .btn-yellow {
+        font-size: 0.9rem;
+        padding: 12px 24px;
+        max-width: 300px;
+        margin-bottom: 10px;
+    }
+
+    .slider-wrapper {
+        position: relative;
+    }
+
+    .slider {
+        --slide-width: clamp(320px, 75vw, 800px);
+        --slide-height: clamp(250px, 80vh, 600px);
+
+        display: grid;
+        grid-auto-flow: column;
+        scroll-snap-type: x mandatory;
+        max-width: var(--slide-width);
+        border: 5px solid #fff;
+        box-shadow: 0 2px 15px rgba(#000, 0.2), 0 2px 20px rgba(#000, 0.25);
+        overflow-y: hidden;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .slide {
+        scroll-snap-align: start;
+        width: var(--slide-width);
+        height: var(--slide-height);
+        background-size: cover;
+        /* Esto garantiza que la imagen cubra todo el contenedor */
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+
+    /* Estilos para las flechas de navegación */
+    .arrow {
+        position: absolute;
+        bottom: 100px;
+        /* Mueve las flechas a la parte inferior */
+        transform: translateY(0);
+        /* Ajusta la posición vertical */
+        background-color: rgba(0, 0, 0, 0.5);
+        border: none;
+        color: white;
+        padding: 20px;
+        cursor: pointer;
+        z-index: 1000;
+        font-size: 24px;
+        border-radius: 50%;
+    }
+
+    .arrow.prev {
+        margin-left: 50px;
+        /* Ajusta la distancia desde la izquierda */
+    }
+
+    .arrow.next {
+        right: 10%;
+        /* Ajusta la distancia desde la derecha */
+    }
+
+    .arrow:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+}
+
+
+
+
+
+
+/* Estilos adicionales para las flechas de navegación */
+.arrow {
+    position: absolute;
+    bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 20px;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 24px;
+    border-radius: 50%;
+}
+
+.arrow.prev {
+    left: 10px;
+}
+
+.arrow.next {
+    right: 10px;
+}
+
+.arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.caption {
+    display: block;
+    margin-top: 25px;
+    color: #999;
+    letter-spacing: 0.5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* DIV 1 y 2 comparten la misma fila (horizontal) */
+.div1 {
+    background-color: rgb(0, 0, 0);
+    flex: 0 0 30%;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+/* Estilos para el contenido de contacto */
+.contact-info {
+    display: flex;
+    align-items: center;
+    margin-left: 60px;
+}
+
+.contact-info .icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.contact-info .contact-text {
+    width: auto;
+    height: 14px;
+    margin-right: 20px;
+}
+
+/* Estilos para los íconos sociales */
+.social-icons {
+    display: flex;
+    gap: 10px;
+    margin-right: 70px;
+}
+
+.social-icons .icon {
+    width: 23px;
+    height: 23px;
+}
+
+/* DIV 2 */
+.div2 {
+    flex: 0 0 80%;
+    background-color: rgb(255, 255, 255);
+}
+
+/* Estilos para el logotipo */
+.logo {
+    flex: 1;
+    margin-top: -20px;
+    margin-left: 90px;
+}
+
+.logo-img {
+    height: 40px;
+}
+
+/* Estilos para el menú de navegación */
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    flex: 3;
+    margin-top: -20px;
+    font-family: 'Arial', sans-serif;
+    font-size: 17px;
+    font-weight: 350;
+}
+
+.menu-item {
+    margin: 0 30px;
+    text-decoration: none;
+    color: black;
+    font-weight: normal;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* Estilo para el enlace de "Inicio" (activo) */
+.menu-item.active {
+    color: rgba(226, 60, 0, 0.884);
+    font-weight: bold;
+}
+
+/* Subrayado permanente en "Inicio" */
+.menu-item.active::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(226, 60, 0, 0.884);
+    bottom: -5px;
+    left: 0;
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 180px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 15px;
+    /* Bordes redondeados para el menú desplegable */
+    overflow: hidden;
+    /* Para asegurarte de que el contenido no se salga del contenedor */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #ddd;
+    /* Líneas entre los elementos */
+    transition: background-color 0.3s ease;
+    max-width: 180px;
+    /* Limita el ancho del enlace */
+    text-align: left;
+    /* Alinea el texto a la izquierda */
+}
+
+.dropdown-content a:first-child {
+    border-top-left-radius: 10px;
+    /* Redondear el primer elemento */
+    border-top-right-radius: 10px;
+    color: rgb(224, 146, 0);
+    /* Color de texto naranja para el primer enlace */
+}
+
+.dropdown-content a:last-child {
+    border-bottom-left-radius: 10px;
+    /* Redondear el último elemento */
+    border-bottom-right-radius: 10px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilo para el botón de contacto */
+.contact-button {
+    flex: 0 1 auto;
+    margin-left: 15px;
+    margin-right: 70px;
+    margin-top: 0px;
+}
+
+.btn-contact {
+    background-color: rgba(226, 60, 0, 0.884);
+    color: white;
+    padding: 7px 22px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 200;
+    font-size: 19px;
+    transition: background-color 0.3s;
+    min-width: 150px;
+}
+
+.btn-contact:hover {
+    background-color: rgba(226, 60, 0, 0.884);
+}
+
+/* DIV 3 y 4 comparten la misma fila (horizontal) */
+.div3 {
+    flex: 1;
+    background-color: rgb(241, 241, 241);
+}
+
+
+
+/* Estilos para el texto en div3 */
+
+.content-text {
+    margin-left: 20px;
+    padding: 20px;
+    /* Añade espacio alrededor del texto */
+}
+
+
+.content-text h1 {
+    font-size: 3.5rem;
+    /* Ajusta el tamaño de fuente */
+    font-weight: bold;
+    color: #333;
+    line-height: 1.2;
+    /* Ajusta el espaciado entre las líneas */
+    max-width: 400px;
+    /* Limita el ancho del texto */
+    margin-right: 260px;
+}
+
+.content-text h1 span {
+    color: orange;
+}
+
+.content-text p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    color: #666;
+    line-height: 1.2;
+    /* Ajusta el espaciado entre las líneas */
+    max-width: 348px;
+    /* Limita el ancho del texto */
+    margin-right: 260px;
+}
+
+.button-group {
+    margin-top: 20px;
+}
+
+
+
+.btn-orange,
+.btn-yellow {
+    text-decoration: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 1rem;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-orange {
+    background-color: orange;
+}
+
+.btn-yellow {
+    background-color: yellow;
+    color: black;
+}
+
+.btn-orange:hover,
+.btn-yellow:hover {
+    opacity: 0.8;
+}
+
+
+
+
+
+
+
+
+.div4 {
+    flex: 1;
+    background-color: rgb(241, 241, 241);
+}
+
+
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    min-height: 100vh;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(120deg, #f9f9f9, #f2f2f2);
+    font-family: Tahoma, sans-serif;
+}
+
+.slider-wrapper {
+    position: relative;
+}
+
+.slider {
+    --slide-width: clamp(320px, 75vw, 800px);
+    --slide-height: clamp(250px, 80vh, 600px);
+
+    display: grid;
+    grid-auto-flow: column;
+    scroll-snap-type: x mandatory;
+    max-width: var(--slide-width);
+    border: 5px solid  rgb(241, 241, 241);
+    box-shadow: 0 2px 15px rgba(#000, 0.2), 0 2px 20px rgba(#000, 0.25);
+    overflow-y: hidden;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.slide {
+    scroll-snap-align: start;
+    width: var(--slide-width);
+    height: var(--slide-height);
+    background-size: cover;
+    /* Esto garantiza que la imagen cubra todo el contenedor */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+/* Estilos para las flechas de navegación */
+.arrow {
+    position: absolute;
+    bottom: 150px;
+    /* Mueve las flechas a la parte inferior */
+    transform: translateY(0);
+    /* Ajusta la posición vertical */
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 20px;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 24px;
+    border-radius: 50%;
+}
+
+.arrow.prev {
+    left: 65%;
+    /* Ajusta la distancia desde la izquierda */
+}
+
+.arrow.next {
+    right: 20%;
+    /* Ajusta la distancia desde la derecha */
+}
+
+.arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+.caption {
+    display: block;
+    margin-top: 25px;
+    color: #999;
+    letter-spacing: 0.5px;
+}
